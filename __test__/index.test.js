@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const flow = require('../')
 
 test('entry and output', () => {
@@ -23,4 +24,9 @@ test('resolve extensions', () => {
       extensions: ['', '.js', '.css']
     }
   })
+})
+
+test('compress', () => {
+  const config = flow(flow.compress({webpack}))
+  expect(config.plugins[0].constructor.name).toBe('UglifyJsPlugin')
 })
