@@ -23,7 +23,7 @@ module.exports = flow(
 
   output('./dist/bundle.js'),
 
-  extensions: ['', '.js'],
+  extensions(['', '.js']),
 
   babel({
     presets: ['es2015']
