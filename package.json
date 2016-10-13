@@ -13,10 +13,12 @@
     "node": ">=6"
   },
   "scripts": {
-    "test": "jest && eslint *.js"
+    "test": "jest && eslint *.js flow/*.js"
   },
   "files": [
-    "*.js",
+    "index.js",
+    "flow.js",
+    "flows",
     "yarn.lock"
   ],
   "keywords": [
