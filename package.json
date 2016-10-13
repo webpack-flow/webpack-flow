@@ -1,6 +1,6 @@
 {
   "name": "webpack-flow",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Sharable webpack config made easy!",
   "license": "MIT",
   "repository": "egoist/webpack-flow",
