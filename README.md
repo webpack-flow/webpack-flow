@@ -30,7 +30,7 @@ module.exports = flow(
   }),
 
   // the env flow
-  // only return relavant config when process.env.NODE_ENV matched
+  // only returns relevant config when process.env.NODE_ENV matched
   env(
     compress()
   )('production')
