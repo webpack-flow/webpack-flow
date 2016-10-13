@@ -1,0 +1,43 @@
+{
+  "name": "webpack-flow",
+  "version": "0.0.0",
+  "description": "Sharable webpack config made easy!",
+  "license": "MIT",
+  "repository": "egoist/webpack-flow",
+  "author": {
+    "name": "EGOIST",
+    "email": "0x142857@gmail.com",
+    "url": "github.com/egoist"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "files": [
+    "*.js",
+    "yarn.lock"
+  ],
+  "keywords": [
+    "webpack",
+    "sharable",
+    "config"
+  ],
+  "devDependencies": {
+    "eslint": "latest",
+    "eslint-config-rem": "latest",
+    "jest-cli": "^15.1.1",
+    "webpack": "^1.13.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "eslintConfig": {
+    "extends": "rem/esnext"
+  },
+  "dependencies": {
+    "lodash.merge": "^4.6.0",
+    "webpack-merge": "^0.14.1"
+  }
+}
