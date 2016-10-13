@@ -28,7 +28,37 @@ module.exports = flow(
   babel({
     presets: ['es2015']
   })
-  
+
+)
+```
+
+## Create your own flow
+
+Each flow will be merged into the baseConfig `{}` in order, so a flow is simply a function which returns a webpack config object. For example, you want a reusable typescript flow:
+
+```js
+// my-ts-flow.js
+module.exports = (options) => {
+  return {
+    module: {
+      loaders: [
+        {test: /\.tsx?$/, loader: 'ts'}
+      ]
+    },
+    ts: options
+  }
+}
+```
+
+And then you can use it in your webpack config:
+
+```js
+// webpack.config.js
+const ts = require('./my-ts-flow')
+
+module.exports = flow(
+  // ... other flows
+  ts(options)
 )
 ```
 
