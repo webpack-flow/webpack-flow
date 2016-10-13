@@ -14,7 +14,7 @@ $ npm install -D webpack-flow
 ```js
 // your webpack.config.js
 const flow, {
-  entry, output, extensions, babel //...
+  entry, output, extensions, babel, env //...
 } = require('webpack-flow')
 
 module.exports = flow(
@@ -27,7 +27,13 @@ module.exports = flow(
 
   babel({
     presets: ['es2015']
-  })
+  }),
+
+  // the env flow
+  // only return relavant config when process.env.NODE_ENV matched
+  env(
+    compress()
+  )('production')
 
 )
 ```
