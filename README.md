@@ -6,7 +6,7 @@
 
 ```bash
 # yarn add webpack-flow --dev
-$ npm install --D webpack-flow
+$ npm install -D webpack-flow
 ```
 
 ## Usage
