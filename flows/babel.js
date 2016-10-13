@@ -1,11 +1,11 @@
 module.exports = options => {
   options = options || {}
   const test = options.test || /\.jsx?$/
-  const loader = options.loader || 'babel'
+  const loaders = options.loaders || ['babel']
   const exclude = options.exclude || [/node_modules/]
 
   delete options.test
-  delete options.loader
+  delete options.loaders
   delete options.exclude
 
   return {
@@ -13,7 +13,7 @@ module.exports = options => {
       loaders: [
         {
           test,
-          loader,
+          loaders,
           exclude
         }
       ]
