@@ -1,4 +1,5 @@
 module.exports = options => {
+  options = options || {}
   const test = options.test || /\.jsx?$/
   const loader = options.loader || 'babel'
   const exclude = options.exclude || [/node_modules/]

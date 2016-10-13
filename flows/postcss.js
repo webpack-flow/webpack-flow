@@ -1,4 +1,5 @@
 module.exports = options => {
+  options = options || {}
   const test = options.test || /\.css$/
   const loader = options.loader || 'style!css!postcss'
 
