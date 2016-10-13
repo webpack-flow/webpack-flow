@@ -120,7 +120,9 @@ babel({
 UglifyJS flow.
 
 ```js
-compress()
+// you need to pass webpack into its options
+const webpack = require('webpack')
+compress({webpack})
 ```
 
 ### env
