@@ -87,10 +87,10 @@ entry({
 ### output
 
 ```js
-// The first argument of output flow is the file path.
+// the first argument of output flow is the file path.
 // it will be parsed into {filename, path}
 output('./dist/bundle.js')
-// th second argument is an optional webpack output option
+// the second argument is an optional webpack output option
 // which will be merged into {filename, path}
 output('./dist/bundle.js', {publicPath: '/'})
 // yields => {output: {filename, path, publicPath}}
