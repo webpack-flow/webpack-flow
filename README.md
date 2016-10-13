@@ -1,6 +1,6 @@
 # webpack-flow [![NPM version](https://img.shields.io/npm/v/webpack-flow.svg?style=flat-square)](https://npmjs.com/package/webpack-flow) [![NPM downloads](https://img.shields.io/npm/dm/webpack-flow.svg?style=flat-square)](https://npmjs.com/package/webpack-flow) [![Build Status](https://img.shields.io/circleci/project/egoist/webpack-flow/master.svg?style=flat-square)](https://circleci.com/gh/egoist/webpack-flow)
 
-`webpack-flow` does not install any build dependencies for you, it's just a way to manage shareable webpack configs and make them reusable.
+`webpack-flow` does not install any build dependencies for you, it's just a way to manage sharable webpack configs and make them reusable.
 
 ## Install
 
