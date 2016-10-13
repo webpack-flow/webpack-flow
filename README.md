@@ -18,12 +18,17 @@ const flow, {
 } = require('webpack-flow')
 
 module.exports = flow(
+
   entry('./src/index.js'),
+
   output('./dist/bundle.js'),
+
   extensions: ['', '.js'],
+
   babel({
     presets: ['es2015']
   })
+  
 )
 ```
 
