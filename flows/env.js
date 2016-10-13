@@ -6,6 +6,9 @@ const flow = require('../flow')
  */
 module.exports = (...flows) => {
   return env => {
-    return process.env.NODE_ENV === env ? flow(...flows) : null
+    const condition = env[0] === '!' ?
+      process.env.NODE_ENV !== env.substr(1) :
+      process.env.NODE_ENV === env
+    return condition ? flow(...flows) : null
   }
 }

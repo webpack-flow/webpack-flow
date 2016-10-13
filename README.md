@@ -13,7 +13,8 @@ $ npm install -D webpack-flow
 
 ```js
 // your webpack.config.js
-const flow, {
+const {
+  flow,
   entry, output, extensions, babel, compress, env //...
 } = require('webpack-flow')
 
