@@ -39,6 +39,8 @@ module.exports = flow(
 )
 ```
 
+Checkout the [complete webpack config](https://gist.github.com/egoist/032bfceddfad7c65c2a6ee668e418935) for React app!
+
 ## Create your own flow
 
 Each flow will be merged into the baseConfig `{}` in order, so a flow is simply a function which returns a webpack config object. For example, you want a reusable typescript flow:
