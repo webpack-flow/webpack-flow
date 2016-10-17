@@ -138,6 +138,14 @@ env(
 )('!production') // only use when not in this env
 ```
 
+### devtool
+
+devtool flow.
+
+```js
+devtool('source-map')
+```
+
 ## Contributing
 
 1. Fork it!
