@@ -105,7 +105,7 @@ extensions(['', '.js', '.jsx'])
 
 ### babel
 
-Built-in babel flow. It has the same options as in babel itself with addtional: `loaders` `test` `exclude` options
+Built-in babel flow. It has the same options as in babel itself with addtional: `loader` `test` `exclude` options
 
 ```js
 babel({
