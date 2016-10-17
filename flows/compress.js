@@ -1,18 +1,19 @@
+const webpack = require('webpack')
+
 module.exports = options => {
   options = options || {}
-  const webpack = options.webpack
-
-  if (!webpack) {
-    throw new Error('You need to pass webpack into the compress flow!')
-  }
+  const sourceMap = options.sourceMap === false ? false : true
 
   return {
     plugins: [
       new webpack.optimize.UglifyJsPlugin({
-        compress: {
+        sourceMap,
+        compressor: {
           warnings: false
         },
-        comments: false
+        output: {
+          comments: false
+        }
       })
     ]
   }

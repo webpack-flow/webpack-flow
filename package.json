@@ -28,8 +28,7 @@
   "devDependencies": {
     "eslint": "latest",
     "eslint-config-rem": "latest",
-    "jest-cli": "^15.1.1",
-    "webpack": "^1.13.2"
+    "jest-cli": "^15.1.1"
   },
   "jest": {
     "testEnvironment": "node"
@@ -40,5 +39,8 @@
   "dependencies": {
     "lodash.merge": "^4.6.0",
     "webpack-merge": "^0.14.1"
+  },
+  "peerDependencies": {
+    "webpack": ">=2.1.0-beta.25"
   }
 }
