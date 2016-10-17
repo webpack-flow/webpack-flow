@@ -49,10 +49,9 @@ module.exports = (options) => {
   return {
     module: {
       loaders: [
-        {test: /\.tsx?$/, loader: 'ts'}
+        {test: /\.tsx?$/, loader: 'ts', query: options}
       ]
-    },
-    ts: options
+    }
   }
 }
 ```
