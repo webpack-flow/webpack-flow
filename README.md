@@ -147,6 +147,17 @@ devtool flow.
 devtool('source-map')
 ```
 
+### command
+
+Command flow, only return config when matching cli command.
+
+```js
+// only add jest when you run `$ cli test`
+command(
+  jest()
+)('test')
+```
+
 ## Contributing
 
 1. Fork it!
