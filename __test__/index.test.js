@@ -31,11 +31,6 @@ test('compress', () => {
   expect(config.plugins[0].constructor.name).toBe('UglifyJsPlugin')
 })
 
-test('allow function', () => {
-  const config = flow(() => ({entry: 'aaa'}))
-  expect(config.entry).toBe('aaa')
-})
-
 test('allow array', () => {
   const config = flow([
     flow.entry('./src/index.js'),
