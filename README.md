@@ -110,6 +110,7 @@ extensions(['', '.js', '.jsx'])
 Built-in babel flow. It has the same options as in babel itself with addtional: `loader` `test` `exclude` options
 
 ```js
+// however .babelrc is more recommended
 babel({
   presets: ['es2015'],
   exclude: [/node_modules/]
@@ -121,9 +122,7 @@ babel({
 UglifyJS flow.
 
 ```js
-// compress with sourceMap
-// default is true
-compress({sourceMap})
+compress()
 ```
 
 ### env

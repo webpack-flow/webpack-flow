@@ -30,3 +30,21 @@ test('compress', () => {
   const config = flow(flow.compress({webpack}))
   expect(config.plugins[0].constructor.name).toBe('UglifyJsPlugin')
 })
+
+test('allow function', () => {
+  const config = flow(() => ({entry: 'aaa'}))
+  expect(config.entry).toBe('aaa')
+})
+
+test('allow array', () => {
+  const config = flow([
+    flow.entry('./src/index.js'),
+    flow.extensions(['', '.js'])]
+  )
+  expect(config).toEqual({
+    entry: './src/index.js',
+    resolve: {
+      extensions: ['', '.js']
+    }
+  })
+})
