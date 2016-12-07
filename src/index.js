@@ -8,8 +8,10 @@ import extensions from './flows/extensions'
 import output from './flows/output'
 import merge from './flows/merge'
 
-export default function flow(callback) {
-  const config = new Config()
+const globalFlows = []
+
+function flow(callback) {
+  const config = new Config({flows: globalFlows})
 
   // register built-in flows
   config.use(entry)
@@ -25,3 +27,9 @@ export default function flow(callback) {
 
   return config.buildConfig()
 }
+
+flow.use = (flow, extra) => {
+  globalFlows.push({flow, extra})
+}
+
+export default flow

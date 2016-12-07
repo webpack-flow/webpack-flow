@@ -46,3 +46,11 @@ test('allow array', () => {
     }
   })
 })
+
+test('global flows', () => {
+  flow.use('ts', () => ({ts: true}))
+  const config = flow(config => {
+    config.ts()
+  })
+  expect(config.ts).toBe(true)
+})

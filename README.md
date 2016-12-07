@@ -182,6 +182,10 @@ const myFlow = options => {
 config.use('myFlow', myFlow)
 ```
 
+### flow.use
+
+Similar to `config.use` but register globally.
+
 ## Contributing
 
 1. Fork it!
