@@ -27,6 +27,5 @@ export default class Config {
 
   buildConfig() {
     return merge.smart(...this.configs)
-    return this
   }
 }
