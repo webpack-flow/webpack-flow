@@ -2,6 +2,32 @@
 
 `webpack-flow` does not install any build dependencies for you, it's just a way to manage sharable webpack configs and make them reusable.
 
+## Table of Contents
+
+<!-- toc -->
+
+- [Install](#install)
+- [Usage](#usage)
+- [Create your own flow](#create-your-own-flow)
+- [Built-in Flows](#built-in-flows)
+  * [entry](#entry)
+  * [output](#output)
+  * [extensions](#extensions)
+  * [babel](#babel)
+  * [compress](#compress)
+  * [devtool](#devtool)
+  * [merge](#merge)
+- [External Flows](#external-flows)
+- [API](#api)
+  * [config.env](#configenv)
+  * [config.use(flow: object)](#configuseflow-object)
+  * [config.use(name: string|array, flow: function)](#configusename-stringarray-flow-function)
+  * [flow.use](#flowuse)
+- [Contributing](#contributing)
+- [License](#license)
+
+<!-- tocstop -->
+
 ## Install
 
 ```bash
@@ -144,6 +170,10 @@ config.merge({
   plugins: [/* blah.. */]
 })
 ```
+
+## External Flows
+
+[List of flows maintained by community.](https://github.com/webpack-flow/webpack-flow/wiki/External-Flows)
 
 ## API
 

@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "jest && eslint **/src/** --ext .js && npm run build",
-    "build": "gulp build"
+    "build": "gulp build",
+    "toc": "markdown-toc -i README.md"
   },
   "files": [
     "dist",
@@ -35,6 +36,7 @@
     "gulp-babel": "^6.1.2",
     "gulp-named": "^1.0.0",
     "jest-cli": "^15.1.1",
+    "markdown-toc": "^0.13.0",
     "webpack": "^1.13.2"
   },
   "jest": {
