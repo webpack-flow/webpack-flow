@@ -9,6 +9,8 @@
 $ npm install -D webpack-flow
 ```
 
+Note: `webpack-flow` itself works for both webpack 1 and 2, but some built-in flows only work for webpack 2.
+
 ## Usage
 
 ```js
@@ -47,8 +49,8 @@ module.exports = {
   config(options) {
     return {
       module: {
-        loaders: [
-          {test: /\.tsx?$/, loader: 'ts', query: options}
+        rules: [
+          {test: /\.tsx?$/, loader: 'ts-loader', options}
         ]
       }
     }
