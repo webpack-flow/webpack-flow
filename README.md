@@ -67,6 +67,8 @@ module.exports = flow(config => {
 })
 ```
 
+Check out the [built-in](https://github.com/webpack-flow/webpack-flow/tree/master/src/flows) flows for reference.
+
 ## Built-in Flows
 
 ### entry
