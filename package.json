@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "lodash.merge": "^4.6.0",
-    "webpack-merge": "^0.14.1"
+    "webpack-merge": "^1.0.2"
   },
   "peerDependencies": {
     "webpack": "*"
