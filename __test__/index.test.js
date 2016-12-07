@@ -1,5 +1,5 @@
-const path = require('path')
-const flow = require('../')
+import path from 'path'
+import flow from '../src'
 
 test('entry and output', () => {
   const config = flow(config => {
