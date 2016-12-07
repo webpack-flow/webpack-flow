@@ -133,6 +133,15 @@ devtool flow.
 config.devtool('source-map')
 ```
 
+### merge
+
+Directly merge a webpack config without thinking.
+
+```js
+config.merge({
+  plugins: [/* blah.. */]
+})
+```
 
 ## API
 
