@@ -13,46 +13,44 @@ $ npm install -D webpack-flow
 
 ```js
 // your webpack.config.js
-const {
-  flow,
-  entry, output, extensions, babel, compress, env //...
-} = require('webpack-flow')
+const flow = require('webpack-flow')
 
-module.exports = flow(
+module.exports = flow(config => {
+  config.entry('./src/index.js')
 
-  entry('./src/index.js'),
+  if (config.env === 'production') {
+    config.output('./dist/[name].[chunkhash:8].js')
+    config.compress()
+    config.devtool('source-map')
+  } else {
+    config.output('./dist/[name].js')
+    config.devtool('eval-source-map')
+  }
 
-  output('./dist/bundle.js'),
-
-  extensions(['', '.js']),
-
-  babel({
-    presets: ['es2015']
-  }),
-
-  // the env flow
-  // only returns relevant config when process.env.NODE_ENV matched
-  env(
-    compress(options)
-  )('production')
-
-)
+  config.babel({
+    test: /.jsx?/,
+    presets: [
+      ['es2015', {modules: false}]
+    ]
+  })
+})
 ```
-
-Checkout the [complete webpack config](https://gist.github.com/egoist/032bfceddfad7c65c2a6ee668e418935) for React app!
 
 ## Create your own flow
 
-Each flow will be merged into the baseConfig `{}` in order, so a flow is simply a function which returns a webpack config object. For example, you want a reusable typescript flow:
+Config created by each flow will be merged into the baseConfig `{}` in order, so a flow is an object with its name and a function which returns a webpack config object. For example, you want a reusable typescript flow:
 
 ```js
 // my-ts-flow.js
-module.exports = (options) => {
-  return {
-    module: {
-      loaders: [
-        {test: /\.tsx?$/, loader: 'ts', query: options}
-      ]
+module.exports = {
+  name: 'ts',
+  config(options) {
+    return {
+      module: {
+        loaders: [
+          {test: /\.tsx?$/, loader: 'ts', query: options}
+        ]
+      }
     }
   }
 }
@@ -64,10 +62,9 @@ And then you can use it in your webpack config:
 // webpack.config.js
 const ts = require('./my-ts-flow')
 
-module.exports = flow(
-  // ... other flows
-  ts(options)
-)
+module.exports = flow(config => {
+  config.use(ts).ts(options)
+})
 ```
 
 ## Built-in Flows
@@ -77,9 +74,9 @@ module.exports = flow(
 The arguments of entry flow are the same as webpack entry.
 
 ```js
-entry('./src.js')
-// or
-entry({
+config.entry('./src.js')
+// or multi entry
+config.entry({
   client: './src.js'
 })
 // ...
@@ -90,10 +87,10 @@ entry({
 ```js
 // the first argument of output flow is the file path.
 // it will be parsed into {filename, path}
-output('./dist/bundle.js')
+config.output('./dist/bundle.js')
 // the second argument is an optional webpack output option
 // which will be merged into {filename, path}
-output('./dist/bundle.js', {publicPath: '/'})
+config.output('./dist/bundle.js', {publicPath: '/'})
 // yields => {output: {filename, path, publicPath}}
 ```
 
@@ -102,16 +99,17 @@ output('./dist/bundle.js', {publicPath: '/'})
 Resolve extensions. The same as webpack resolve.extensions.
 
 ```js
-extensions(['', '.js', '.jsx'])
+config.extensions(['', '.js', '.jsx'])
+// alias to config.ext()
 ```
 
 ### babel
 
-Built-in babel flow. It has the same options as in babel itself with addtional: `loader` `test` `exclude` options
+Built-in babel flow. It has the same options as in babel itself with addtional: `loader` `test` `exclude` `include` `enforce` options
 
 ```js
 // however .babelrc is more recommended
-babel({
+config.babel({
   presets: ['es2015'],
   exclude: [/node_modules/]
 })
@@ -122,21 +120,7 @@ babel({
 UglifyJS flow.
 
 ```js
-compress()
-```
-
-### env
-
-Environment variable flow.
-
-```js
-env(
-  // your flows, like entry(), babel() ...
-)('production') // only use when in this env
-
-env(
-  // flows...
-)('!production') // only use when not in this env
+config.compress()
 ```
 
 ### devtool
@@ -144,18 +128,45 @@ env(
 devtool flow.
 
 ```js
-devtool('source-map')
+config.devtool('source-map')
 ```
 
-### command
 
-Command flow, only return config when matching cli command.
+## API
+
+### config.env
+
+The value of `process.env.NODE_ENV`
+
+### config.use(flow: object)
+
+Register a flow which is:
 
 ```js
-// only add jest when you run `$ cli test`
-command(
-  jest()
-)('test')
+const myFlow = {
+  name: 'myFlow',
+  config() {
+    // return a webpack config object
+    return {}
+  }
+}
+
+config.use(myFlow)
+```
+
+The name could also be an array, like `['ts', 'typescriot']` so that both `config.ts` and `config.typescript` are available.
+
+### config.use(name: string|array, flow: function)
+
+Similar to `config.use(flow: object)` but register name when you register the flow:
+
+```js
+const myFlow = options => {
+  // return a webpack config object
+  return {}
+}
+
+config.use('myFlow', myFlow)
 ```
 
 ## Contributing
