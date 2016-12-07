@@ -13,7 +13,7 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "jest && eslint **/src/** --ext .js",
+    "test": "jest && eslint **/src/** --ext .js && npm run build",
     "build": "gulp build"
   },
   "files": [
