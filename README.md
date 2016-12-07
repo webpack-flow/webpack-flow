@@ -30,7 +30,7 @@ module.exports = flow(config => {
   }
 
   config.babel({
-    test: /.jsx?/,
+    test: /\.jsx?/,
     presets: [
       ['es2015', {modules: false}]
     ]
