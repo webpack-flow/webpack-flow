@@ -1,12 +1,11 @@
 const path = require('path')
-const webpack = require('webpack')
 const flow = require('../')
 
 test('entry and output', () => {
-  const config = flow(
-    flow.entry('./src/index.js'),
-    flow.output('./dist/bundle.js', {publicPath: '/'})
-  )
+  const config = flow(config => {
+    config.entry('./src/index.js'),
+    config.output('./dist/bundle.js', {publicPath: '/'})
+  })
   expect(config).toEqual({
     entry: './src/index.js',
     output: {
@@ -18,7 +17,9 @@ test('entry and output', () => {
 })
 
 test('resolve extensions', () => {
-  const config = flow(flow.extensions(['', '.js', '.css']))
+  const config = flow(config => {
+    config.extensions(['', '.js', '.css'])
+  })
   expect(config).toEqual({
     resolve: {
       extensions: ['', '.js', '.css']
@@ -27,15 +28,17 @@ test('resolve extensions', () => {
 })
 
 test('compress', () => {
-  const config = flow(flow.compress({webpack}))
+  const config = flow(config => {
+    config.compress()
+  })
   expect(config.plugins[0].constructor.name).toBe('UglifyJsPlugin')
 })
 
 test('allow array', () => {
-  const config = flow([
-    flow.entry('./src/index.js'),
-    flow.extensions(['', '.js'])]
-  )
+  const config = flow(config => {
+    config.entry('./src/index.js'),
+    config.extensions(['', '.js'])
+  })
   expect(config).toEqual({
     entry: './src/index.js',
     resolve: {

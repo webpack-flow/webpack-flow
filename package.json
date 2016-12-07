@@ -13,7 +13,8 @@
     "node": ">=4"
   },
   "scripts": {
-    "test": "jest && eslint *.js flow/*.js"
+    "test": "jest && eslint **/src/** --ext .js",
+    "build": "gulp build"
   },
   "files": [
     "dist",
