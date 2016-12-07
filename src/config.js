@@ -7,16 +7,16 @@ export default class Config {
   }
 
   use(flow, extra) {
-    let name
+    let flowName
     if (typeof extra === 'function') {
-      // .use(name, flow)
-      name = flow
+      // .use(flowName, flow)
+      flowName = flow
       flow = extra
     } else {
       // .use(flow)
-      name = flow.name
+      flowName = flow.name
     }
-    const names = Array.isArray(name) ? name : [name]
+    const names = Array.isArray(flowName) ? flowName : [flowName]
     for (const name of names) {
       this[name] = (...args) => {
         this.configs.push(flow.config(...args))
