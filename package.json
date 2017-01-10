@@ -1,0 +1,40 @@
+{
+  "name": "webpack-flow",
+  "version": "0.0.0",
+  "description": "Make webpack great again.",
+  "repository": {
+    "url": "egoist/webpack-flow",
+    "type": "git"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "bin": "bin/webpack-flow",
+  "scripts": {
+    "test": "ava && npm run lint",
+    "lint": "xo"
+  },
+  "author": "egoist <0x142857@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "space": 2,
+    "semicolon": false
+  },
+  "dependencies": {
+    "@webpack-blocks/webpack2": "^0.3.1",
+    "express": "^4.14.0",
+    "friendly-errors-webpack-plugin": "^1.1.2",
+    "html-webpack-plugin": "^2.26.0",
+    "lodash.merge": "^4.6.0",
+    "post-compile-webpack-plugin": "^0.1.1",
+    "webpack-dev-middleware": "^1.9.0",
+    "webpack-hot-middleware": "^2.15.0",
+    "webpack-merge": "^2.3.1",
+    "yargs": "^6.6.0"
+  }
+}

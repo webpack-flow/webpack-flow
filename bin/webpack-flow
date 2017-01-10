@@ -1,0 +1,54 @@
+#!/bin/bash
+// >&/dev/null;exec node --harmony-async-await $0 $@
+// vi:syntax=javascript
+
+const path = require('path')
+const yargs = require('yargs')
+const webpackMerge = require('webpack-merge')
+const merge = require('lodash.merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const Context = require('../lib/context')
+const baseConfig = require('../lib/base-config')
+
+const cli = yargs
+  .usage('$0 <...flows> <entry> [options]')
+  .option('production')
+  .describe('production', 'Run webpack-flow in production mode')
+  .alias('production', 'p')
+  .default('production', false)
+  .option('port')
+  .describe('port', 'Development server port')
+  .default('port', 4000)
+
+const flowName = cli.argv._[0]
+const entry = cli.argv._[1]
+const flowNames = cli.argv._.slice(0, -1)
+
+if (!flowName || !entry) {
+  cli.showHelp()
+  process.exit()
+}
+
+process.env.NODE_ENV = cli.argv.production ? 'production' : 'development'
+
+const context = new Context({cli, webpackConfig: baseConfig(entry)})
+context.extends(flowNames)
+context.run()
+
+cli.help()
+
+const config = merge(cli.argv, context.$config)
+const webpackConfig = context.$webpackConfig
+
+webpackConfig.plugins.push(
+  new HtmlWebpackPlugin(Object.assign({
+    title: 'webpack-flow app',
+    template: path.join(__dirname, '../lib/template.html')
+  }, config.html))
+)
+
+if (cli.argv.production) {
+  require('../lib/build')(webpackConfig, config)
+} else {
+  require('../lib/dev')(webpackConfig, config)
+}
